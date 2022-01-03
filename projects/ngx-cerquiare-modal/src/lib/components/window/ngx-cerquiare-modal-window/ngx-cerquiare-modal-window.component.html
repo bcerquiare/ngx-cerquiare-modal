@@ -1,0 +1,29 @@
+<div class="pane"
+    [style.zIndex]="zIndex + depth"
+>
+
+    <div class="window"
+        [style.paddingRight]="(15 * attr_shrink)+'px'"
+        [style.transform]="'scale('+(1 - (attr_shrink/100))+')'"
+        [attr.modal-id]="id"
+        [attr.modal-depth]="depth"
+        [ngClass]="{'closing': is_closed}"
+    >
+
+        <div class="window-header">
+            <div class="window-header-content">
+                testesssss testesssss testesssss
+            </div>
+            <div class="window-header-buttons">
+                <div class="button">X</div>
+                <div class="button">Y</div>
+            </div>
+        </div>
+        <div class="window-body">
+            <ng-content></ng-content>
+        </div>
+        <div class="window-footer">c</div>
+
+    </div>
+
+</div>
