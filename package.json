@@ -1,6 +1,11 @@
 {
   "name": "ngx-cerquiare-modal-workspace",
   "version": "0.0.0",
+  "author": {
+    "name": "bcerquiare",
+    "email": "bcerquiare@outlook.com"
+  },
+  "description": "Another modal component!!",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

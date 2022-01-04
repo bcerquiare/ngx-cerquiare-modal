@@ -14,4 +14,12 @@ export class NgxCerquiareModalComponentBase implements INgxCerquiareModalWindowC
 
     @ViewChild(NgxCerquiareModalWindowComponent, {static:true}) modal!:NgxCerquiareModalWindowComponent
 
+    ngOnModalInit(...args:any){
+
+    }
+
+    ngOnModalDestroy(){
+
+    }
+
 }

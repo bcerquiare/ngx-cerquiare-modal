@@ -2,4 +2,6 @@ import { NgxCerquiareModalWindowComponent } from "./../components/window/ngx-cer
 
 export interface INgxCerquiareModalWindowComponent{
     modal:NgxCerquiareModalWindowComponent
+    ngOnModalInit(...args:any):void
+    ngOnModalDestroy():void
 }

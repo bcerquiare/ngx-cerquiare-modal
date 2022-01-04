@@ -32,8 +32,7 @@ export class DomService {
             this.applicationRef.attachView(componentRef.hostView);
 
             // get DOM element from component
-            const domElem = (componentRef.hostView as EmbeddedViewRef<any>)
-                .rootNodes[0] as HTMLElement;
+            const domElem = (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
 
             document.body.appendChild(domElem);
 

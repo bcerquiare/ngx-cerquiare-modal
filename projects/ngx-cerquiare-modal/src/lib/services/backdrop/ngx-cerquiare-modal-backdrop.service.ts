@@ -1,47 +1,56 @@
 import { ComponentRef, Injectable, Type } from '@angular/core';
 import { Observable } from 'rxjs';
+import { NgxCerquiareModalIntent } from '../../classes/NgxCerquiareModalIntent';
 import { NgxCerquiareModalBackdropComponent } from '../../components/ngx-cerquiare-modal-backdrop/ngx-cerquiare-modal-backdrop.component';
 import { INgxCerquiareModalWindowComponent } from '../../interfaces/INgxCerquiareModalWindowComponent';
 import { DomService } from '../dom/dom.service';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class NgxCerquiareModalBackdropService {
 
-    protected backdrop?:ComponentRef<NgxCerquiareModalBackdropComponent>
-    windows:Array<ComponentRef<INgxCerquiareModalWindowComponent>> = []
+    protected backdrop?: ComponentRef<NgxCerquiareModalBackdropComponent>
+    windows: Array<ComponentRef<INgxCerquiareModalWindowComponent>> = []
 
     constructor(
-        public dom:DomService
+        public dom: DomService
     ) {
 
     }
 
-    protected createWindow<T extends INgxCerquiareModalWindowComponent>(component:Type<T>){
+    protected createWindow<T extends INgxCerquiareModalWindowComponent>(component:Type<T>, ...args:Array<any>): Observable<T> {
 
-        this.createBackdrop()
+        return new Observable(o => {
 
-        this.dom.appendComponentToBody(component).subscribe(c => {
+            this.createBackdrop()
 
-            c.instance.modal.id = 'mcwdw_'+btoa(Math.random().toString()).slice(0, 16)
-            c.instance.modal.depth = this.getMaxDepth() + 1
-            c.instance.modal.closed.subscribe(() => {
+            this.dom.appendComponentToBody(component).subscribe(c => {
 
-                this.onWindowClosed(c)
+                c.instance.modal.id = 'mcwdw_' + btoa(Math.random().toString()).slice(0, 16)
+                c.instance.modal.depth = this.getMaxDepth() + 1
+                c.instance?.ngOnModalInit(...args)
+                c.instance.modal.closed.subscribe(() => {
 
-                c.instance.modal.performeClose().subscribe(() => {
+                    this.onWindowClosed(c)
 
-                    this.dom.removeComponentFromBody(c)
-                    this.windows.splice( this.windows.findIndex(f => f === c), 1 )
+                    c.instance.modal.performeClose().subscribe(() => {
+
+                        c.instance?.ngOnModalDestroy()
+                        this.dom.removeComponentFromBody(c)
+                        this.windows.splice(this.windows.findIndex(f => f === c), 1)
+
+                    })
 
                 })
 
+                this.windows.push(c)
+                this.onNewWindowCreated(c)
+
+                o.next(c.instance)
+                o.complete()
+
             })
-
-            this.windows.push(c)
-
-            this.onNewWindowCreated(c)
 
         })
 
@@ -49,9 +58,9 @@ export class NgxCerquiareModalBackdropService {
 
 
     // Cria o pano de fundo se necessário
-    protected createBackdrop(){
+    protected createBackdrop() {
 
-        if( this.backdrop ){
+        if (this.backdrop) {
             return
         }
 
@@ -62,9 +71,9 @@ export class NgxCerquiareModalBackdropService {
     }
 
     // Remove o pano de fundo
-    protected removeBackdrop(){
+    protected removeBackdrop() {
 
-        if( this.backdrop ){
+        if (this.backdrop) {
             this.dom.removeComponentFromBody(this.backdrop)
             delete this.backdrop
             this.backdrop = undefined
@@ -73,11 +82,11 @@ export class NgxCerquiareModalBackdropService {
     }
 
     // Quando uma nova modal é criada
-    protected onNewWindowCreated(component:ComponentRef<INgxCerquiareModalWindowComponent>){
+    protected onNewWindowCreated(component: ComponentRef<INgxCerquiareModalWindowComponent>) {
 
         this.windows.forEach(c => {
 
-            if(c == component){
+            if (c == component) {
                 return
             }
 
@@ -88,11 +97,11 @@ export class NgxCerquiareModalBackdropService {
     }
 
     // Quando uma modal é fechada
-    protected onWindowClosed(component:ComponentRef<INgxCerquiareModalWindowComponent>){
+    protected onWindowClosed(component: ComponentRef<INgxCerquiareModalWindowComponent>) {
 
         this.windows.forEach(c => {
 
-            if(c == component){
+            if (c == component) {
                 return
             }
 
@@ -100,7 +109,7 @@ export class NgxCerquiareModalBackdropService {
 
         })
 
-        if( this.windows.filter(x => !x.instance.modal.is_closed).length === 0 ){
+        if (this.windows.filter(x => !x.instance.modal.is_closed).length === 0) {
             this.removeBackdrop()
         }
 
@@ -110,20 +119,20 @@ export class NgxCerquiareModalBackdropService {
     //
     //
 
-    append<T extends INgxCerquiareModalWindowComponent>(window:Type<T>){
-        this.createWindow(window)
+    append<T extends INgxCerquiareModalWindowComponent, C = any>(window: Type<T>, ...args:Array<any>): Observable<T> {
+        return this.createWindow<T>(window, ...args)
     }
 
-    getMaxDepth() : number {
+    getMaxDepth(): number {
         const windows = this.windows.filter(x => !x.instance.modal.is_closed)
         return windows.length === 0 ? -1 : windows.reduce((prev, curr) => (prev.instance.modal.depth > curr.instance.modal.depth ? prev : curr)).instance.modal.depth
     }
 
-    getWindowsWithDepthGreatherThan(depth:number) : Array<any> {
+    getWindowsWithDepthGreatherThan(depth: number): Array<any> {
         return this.windows.filter(x => x.instance.modal.depth > depth)
     }
 
-    focus(window:any){
+    focus(window: any) {
         /*const reorders = this.getWindowsWithDepthGreatherThan(window.depth)
         window.instance.depth = this.getMaxDepth()
         reorders.forEach(x => x.depth = x.depth - 1)*/
@@ -133,7 +142,7 @@ export class NgxCerquiareModalBackdropService {
     //
     //
 
-    get is_visible() : boolean {
+    get is_visible(): boolean {
         return this.windows.length === 0 ? false : true
     }
 

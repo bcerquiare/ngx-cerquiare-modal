@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { INgxCerquiareModalWindowComponent } from '../../../interfaces/INgxCerquiareModalWindowComponent';
 import { INgxCerquiareModalWindowProperties } from '../../../interfaces/INgxCerquiareModalWindowProperties';
 import { NgxCerquiareModalService } from '../../../ngx-cerquiare-modal.service';
 
@@ -28,6 +27,7 @@ export class NgxCerquiareModalWindowComponent implements OnInit{
     }
 
     ngOnInit(): void {
+
     }
 
     shrink(){
