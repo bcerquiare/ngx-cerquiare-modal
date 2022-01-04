@@ -37,6 +37,7 @@ export class NgxCerquiareModalBackdropService {
                     c.instance.modal.performeClose().subscribe(() => {
 
                         c.instance?.ngOnModalDestroy()
+                        o.complete()
                         this.dom.removeComponentFromBody(c)
                         this.windows.splice(this.windows.findIndex(f => f === c), 1)
 
@@ -48,7 +49,6 @@ export class NgxCerquiareModalBackdropService {
                 this.onNewWindowCreated(c)
 
                 o.next(c.instance)
-                o.complete()
 
             })
 

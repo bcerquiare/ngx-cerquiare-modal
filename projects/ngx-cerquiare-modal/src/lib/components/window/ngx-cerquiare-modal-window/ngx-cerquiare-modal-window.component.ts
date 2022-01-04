@@ -34,9 +34,9 @@ export class NgxCerquiareModalWindowComponent implements OnInit{
         this.attr_shrink = Math.abs(this.depth - this.modalService.backdrop.getMaxDepth())
     }
 
-    close(){
+    close(...args:any){
         this.is_closed = true
-        this.closed.emit()
+        this.closed.emit(...args)
     }
 
     performeClose(){

@@ -47,14 +47,16 @@ export class AppComponent{
 
     openModal(){
 
-        this.modal.append<TestComponent>(TesteComponent, 'argument1', 'argument2').subscribe(instance => {
+        this.modal.append<TestComponent>(TestComponent, 'argument1', 'argument2').subscribe(instance => {
             
+            instance.callMyComponentFunctionHere()
+
             instance.modal.closed.subscribe((data:any) => {
                 console.log('component closed', data)
             })
 
         })
-        
+
     }
 
 }
