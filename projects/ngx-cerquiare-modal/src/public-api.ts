@@ -15,3 +15,5 @@ export * from './lib/enum/ENgxCerquiareModalWindowPosition'
 export * from './lib/enum/ENgxCerquiareModalWindowType'
 
 export * from './lib/classes/NgxCerquiareModalComponentBase'
+
+export { cerquiare } from './lib/script/cerquiare'

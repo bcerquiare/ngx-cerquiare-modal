@@ -3,6 +3,7 @@ import { NgxCerquiareModalConfig } from './classes/NgxCerquiareModalConfig';
 import { NgxCerquiareModalBackdropService } from './services/backdrop/ngx-cerquiare-modal-backdrop.service';
 import { INgxCerquiareModalWindowComponent } from './interfaces/INgxCerquiareModalWindowComponent'
 import { NgxCerquiareModalIntent } from './classes/NgxCerquiareModalIntent';
+import { cerquiareGlobal } from './script/cerquiare';
 
 @Injectable({
     providedIn: 'root',
@@ -13,6 +14,8 @@ export class NgxCerquiareModalService{
         public config: NgxCerquiareModalConfig,
         public backdrop: NgxCerquiareModalBackdropService
     ) {
+        // register service in cerquiareGlobal var
+        cerquiareGlobal.modal = this
     }
 
     teste() {
