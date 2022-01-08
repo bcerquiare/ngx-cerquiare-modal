@@ -5,6 +5,7 @@ import { ENgxCerquiareModalWindowType } from '../../../enum/ENgxCerquiareModalWi
 import { INgxCerquiareModalWindowProperties } from '../../../interfaces/INgxCerquiareModalWindowProperties';
 import { NgxCerquiareModalService } from '../../../ngx-cerquiare-modal.service';
 import { TNgxCerquiareModalWindowPosition } from '../../../types/TNgxCerquiareModalWindowPosition';
+import { TNgxCerquiareModalWindowSize } from '../../../types/TNgxCerquiareModalWindowSize';
 import { TNgxCerquiareModalWindowType } from '../../../types/TNgxCerquiareModalWindowType';
 import { NgxCerquiareModalBodyComponent } from '../ngx-cerquiare-modal-body/ngx-cerquiare-modal-body.component';
 import { NgxCerquiareModalFooterComponent } from '../ngx-cerquiare-modal-footer/ngx-cerquiare-modal-footer.component';
@@ -29,6 +30,7 @@ export class NgxCerquiareModalWindowComponent implements OnInit{
     @Input('theme') theme:string = 'light'
     @Input('type') type:TNgxCerquiareModalWindowType = 'modal'
     @Input('position') position:TNgxCerquiareModalWindowPosition = 'right'
+    @Input('size') size:TNgxCerquiareModalWindowSize = 'medium'
 
     // Events
     @Output() closed:EventEmitter<any> = new EventEmitter()
@@ -37,6 +39,8 @@ export class NgxCerquiareModalWindowComponent implements OnInit{
     @ViewChild(NgxCerquiareModalHeaderComponent, {static:true}) header!:NgxCerquiareModalHeaderComponent
     @ViewChild(NgxCerquiareModalBodyComponent, {static:true}) body!:NgxCerquiareModalBodyComponent
     @ViewChild(NgxCerquiareModalFooterComponent, {static:true}) footer!:NgxCerquiareModalFooterComponent
+
+
 
     constructor(
         public modalService:NgxCerquiareModalService

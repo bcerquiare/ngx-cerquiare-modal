@@ -14,6 +14,10 @@ export * from './lib/components/window/ngx-cerquiare-modal-footer/ngx-cerquiare-
 export * from './lib/interfaces/INgxCerquiareModalConfig'
 export * from './lib/interfaces/INgxCerquiareModalWindowComponent'
 
+export * from './lib/types/TNgxCerquiareModalWindowType'
+export * from './lib/types/TNgxCerquiareModalWindowPosition'
+export * from './lib/types/TNgxCerquiareModalWindowSize'
+
 export * from './lib/enum/ENgxCerquiareModalWindowPosition'
 export * from './lib/enum/ENgxCerquiareModalWindowType'
 
