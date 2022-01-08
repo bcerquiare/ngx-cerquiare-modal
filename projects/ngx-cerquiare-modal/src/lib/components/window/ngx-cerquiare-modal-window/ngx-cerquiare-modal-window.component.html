@@ -2,30 +2,28 @@
     [style.zIndex]="zIndex + depth"
 >
 
-    <div class="window"
+    <div class="ngx-cerquiare-window"
+        [ngClass]="{'closing': is_closed}"
         [style.paddingRight]="(15 * attr_shrink)+'px'"
         [style.transform]="'scale('+(1 - (attr_shrink/100))+')'"
         [attr.modal-id]="id"
         [attr.modal-depth]="depth"
-        [ngClass]="{'closing': is_closed}"
+        [attr.theme]="theme"
+        [attr.position]="position"
+        [attr.type]="type"
     >
 
-        <div class="window-header">
-            <div class="window-header-content">
-                testesssss testesssss testesssss
-            </div>
-            <div class="window-header-buttons">
-                <div class="button">
-                  <button class="close-button" type="button" (click)="close()">
-                    <span aria-hidden="true">&#x2715;</span>
-                  </button>
-                </div>
-            </div>
+        <div class="ngx-cerquiare-window-header">
+            <ng-content select="ngx-cerquiare-modal-header"></ng-content>
         </div>
-        <div class="window-body">
-            <ng-content></ng-content>
+
+        <div class="ngx-cerquiare-window-body">
+            <ng-content select="ngx-cerquiare-modal-body"></ng-content>
         </div>
-        <div class="window-footer">c</div>
+
+        <div class="ngx-cerquiare-window-footer">
+            <ng-content select="ngx-cerquiare-modal-footer"></ng-content>
+        </div>
 
     </div>
 

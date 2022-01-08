@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, ViewChild } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 import { NgxCerquiareModalWindowComponent } from "../../public-api";
 import { INgxCerquiareModalWindowComponent } from "../interfaces/INgxCerquiareModalWindowComponent";
 import { INgxCerquiareModalWindowProperties } from "../interfaces/INgxCerquiareModalWindowProperties";

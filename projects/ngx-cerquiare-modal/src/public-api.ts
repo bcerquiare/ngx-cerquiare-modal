@@ -7,6 +7,9 @@ export * from './lib/ngx-cerquiare-modal.module';
 
 export * from './lib/components/ngx-cerquiare-modal-backdrop/ngx-cerquiare-modal-backdrop.component';
 export * from './lib/components/window/ngx-cerquiare-modal-window/ngx-cerquiare-modal-window.component'
+export * from './lib/components/window/ngx-cerquiare-modal-header/ngx-cerquiare-modal-header.component'
+export * from './lib/components/window/ngx-cerquiare-modal-body/ngx-cerquiare-modal-body.component'
+export * from './lib/components/window/ngx-cerquiare-modal-footer/ngx-cerquiare-modal-footer.component'
 
 export * from './lib/interfaces/INgxCerquiareModalConfig'
 export * from './lib/interfaces/INgxCerquiareModalWindowComponent'

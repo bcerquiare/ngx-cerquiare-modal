@@ -5,6 +5,11 @@
   "projects": {
     "ngx-cerquiare-modal": {
       "projectType": "library",
+      "schematics": {
+          "@schematics/angular:component": {
+              "style": "scss"
+          }
+      },
       "root": "projects/ngx-cerquiare-modal",
       "sourceRoot": "projects/ngx-cerquiare-modal/src",
       "prefix": "lib",

@@ -1,6 +1,12 @@
 {
   "name": "ngx-cerquiare-modal",
-  "version": "0.0.1",
+  "version": "0.0.21",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bcerquiare/ngx-cerquiare-modal.git",
+    "directory": "projects/ngx-cerquiare-modal"
+  },
+  "homepage": "https://github.com/bcerquiare/ngx-cerquiare-modal",
   "peerDependencies": {
     "@angular/common": "^12.2.0",
     "@angular/core": "^12.2.0"
