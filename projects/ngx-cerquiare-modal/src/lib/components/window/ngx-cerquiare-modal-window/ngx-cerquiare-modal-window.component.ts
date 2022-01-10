@@ -40,8 +40,6 @@ export class NgxCerquiareModalWindowComponent implements OnInit{
     @ViewChild(NgxCerquiareModalBodyComponent, {static:true}) body!:NgxCerquiareModalBodyComponent
     @ViewChild(NgxCerquiareModalFooterComponent, {static:true}) footer!:NgxCerquiareModalFooterComponent
 
-
-
     constructor(
         public modalService:NgxCerquiareModalService
     ) {
