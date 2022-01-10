@@ -83,7 +83,7 @@ export class NgxCerquiareModalWindowComponent implements OnInit{
     }
 
     get paddingRight() : string{
-        return this.is_modal ? (15 * this.attr_shrink)+'px' : ''
+        return this.is_modal ? (10 * this.attr_shrink)+'px' : ''
     }
 
     get transform() : string {

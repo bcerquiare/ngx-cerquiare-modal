@@ -30,24 +30,42 @@
         padding: 24px 20px;
     }
 
-    .ngx-cerquiare-window-header .ngx-cerquiare-modal-header{
-        box-sizing: border-box;
-        display: flex;
-        width: 100%;
-        align-items: center;
+    .ngx-cerquiare-window-header{
 
-        .modal-header-content{
-            flex-grow: 1;
+        *, * > *{
+            color: inherit;
+            font-size: inherit;
         }
 
-        .modal-header-buttons{
-            display: flex;
-            flex-wrap: nowrap;
-            padding: 0 20px;
-            padding-right: 0;
+    }
 
-            .button{
-                padding: 0 10px;
+    .ngx-cerquiare-window-header{
+
+        border-bottom: 1px solid #ddd;
+
+
+        .ngx-cerquiare-modal-header{
+            box-sizing: border-box;
+            display: flex;
+            width: 100%;
+            align-items: center;
+
+            .modal-header-content{
+                flex-grow: 1;
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
+
+            .modal-header-buttons{
+                display: flex;
+                flex-wrap: nowrap;
+                padding: 0 20px;
+                padding-right: 0;
+
+                .button{
+                    padding: 0 10px;
+                }
+
             }
 
         }
@@ -56,13 +74,15 @@
 
     .ngx-cerquiare-window-body{
         position: relative;
-        padding-top: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
         flex-grow: 1;
         overflow: auto;
     }
 
     .ngx-cerquiare-window-footer{
         padding: 16px 20px;
+        border-top: 1px solid #ddd;
     }
 
     &.closing{
@@ -80,7 +100,7 @@
     cursor: pointer;
 
     &:hover{
-      background-color: #ccc;
+      background-color: rgba($color: #fff, $alpha: 0.3);
     }
 }
 
@@ -116,6 +136,45 @@
     .ngx-cerquiare-window{
         height: auto;
         max-height: 80vh;
+    }
+
+}
+
+//
+// theme dark
+.pane[theme='dark']{
+
+    .ngx-cerquiare-window{
+        background-color: #1d1e23;
+        color: #b9bfc8;
+
+        .ngx-cerquiare-window-header{
+
+            border-bottom: 1px solid #333;
+
+            .modal-header-buttons{
+                display: flex;
+                flex-wrap: nowrap;
+                padding: 0 20px;
+                padding-right: 0;
+
+                button, button span, .ngx-cerquiare-close-button{
+                    color: #666;
+
+                    &:hover span{
+                        color: #fff !important;
+                    }
+
+                }
+
+            }
+
+        }
+
+        .ngx-cerquiare-window-footer{
+            border-top: 1px solid #333;
+        }
+
     }
 
 }

@@ -26,16 +26,16 @@ export class NgxCerquiareModalService{
         return this.backdrop.append<T, C>(component, ...args)
     }
 
-    window(id:string){
-        return this.windows.find(x => x.id === id)
+    modal(id:string){
+        return this.modals.find(x => x.modal.id === id)
     }
 
     //
     //
     //
 
-    get windows() : Array<any>{
-        return this.backdrop.windows
+    get modals() : Array<INgxCerquiareModalWindowComponent>{
+        return this.backdrop.windows.map(c => c.instance)
     }
 
 }
