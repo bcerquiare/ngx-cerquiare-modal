@@ -82,4 +82,20 @@ export class NgxCerquiareModalWindowComponent implements OnInit{
         return this.modalService.config.backdrop.zIndex
     }
 
+    get paddingRight() : string{
+        return this.is_modal ? (15 * this.attr_shrink)+'px' : ''
+    }
+
+    get transform() : string {
+        return this.is_modal ? 'scale('+(1 - (this.attr_shrink/100))+')' : ''
+    }
+
+    get is_modal() : boolean {
+        return this.type === 'modal'
+    }
+
+    get is_dialog() : boolean {
+        return this.type === 'dialog'
+    }
+
 }

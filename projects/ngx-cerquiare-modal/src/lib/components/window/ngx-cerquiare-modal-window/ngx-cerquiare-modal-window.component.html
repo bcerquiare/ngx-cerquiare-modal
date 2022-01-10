@@ -1,16 +1,16 @@
 <div class="pane"
     [style.zIndex]="zIndex + depth"
+    [attr.theme]="theme"
+    [attr.position]="position"
+    [attr.type]="type"
 >
 
     <div class="ngx-cerquiare-window"
         [ngClass]="{'closing': is_closed}"
-        [style.paddingRight]="(15 * attr_shrink)+'px'"
-        [style.transform]="'scale('+(1 - (attr_shrink/100))+')'"
+        [style.paddingRight]="paddingRight"
+        [style.transform]="transform"
         [attr.modal-id]="id"
         [attr.modal-depth]="depth"
-        [attr.theme]="theme"
-        [attr.position]="position"
-        [attr.type]="type"
     >
 
         <div class="ngx-cerquiare-window-header">
